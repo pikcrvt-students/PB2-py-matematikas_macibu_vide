@@ -119,7 +119,7 @@ def patstavigais_darbs():
     print()
     if temaNr == 1:
         jautajumi = [['Atrisini nepilno kvadrātvienādojumu:\n4x^2−36x=0\n\nPirmo ievadi mazāko sakni', 0, 9],
-                     ['Kādas ir nepilnā kvadrātvienādojuma:\n2x^2−18=0 saknes?\n\nVispirms ievadi lielāko sakni!', 3, -3],
+                     ['Kādas ir nepilnā kvadrātvienādojuma:\n2x^2−18=0 saknes?\n\nVispirms ievadi lielāko sakni?', 3, -3],
                      ['Aprēķini kvadrātvienādojuma:\nx^2+7x+12=0 saknes?\n\nJa abas saknes nav vienādas, tad pirmo ievadi lielāko sakni!', -3, -4]
                      ]
         for i in range(len(jautajumi)):
