@@ -160,9 +160,6 @@ def kontroldarbs():
                 atb_sk += 1
                 if atbilde == jautajumi[i][atb]:
                     punkti += 1
-                else:
-                    print('Kļūda!')
-                    print('Pareizā atbilde:', jautajumi[i][atb], 'Nevis', atbilde)
     else:
         print('Tādas tēmas numura nav!\n')
         patstavigais_darbs()
