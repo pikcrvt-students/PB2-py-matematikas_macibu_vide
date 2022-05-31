@@ -26,7 +26,7 @@ ja lietotājs ievada nepareizu atbildi, viņš uzreiz saņem pareizo atbildi
 pēc darba pabeigšanas viņš saņem atzīmi kas tiek aprēķināta no pareizo atbilžu skaita un jautājumiem 10 baļļu skalā.
 
 ### Izvēle Nr.3 pārbaudes darbs
-Ja lietotājs izvēlas otro variantu, viņam tiek piešķirta sekojoša izvēle izvēlēties tēmu par kuru saņemt parbaudes darbu:
+Ja lietotājs izvēlas trešo variantu, viņam tiek piešķirta sekojoša izvēle izvēlēties tēmu par kuru saņemt parbaudes darbu:
 - 1.Kvadrātvienādojums
 
 Tālāk ievadot skaitli "1" un piespiežot "ENTER" pogu lietotājam tiek izvadīti uzdevumi par attiecīgo tēmu.
