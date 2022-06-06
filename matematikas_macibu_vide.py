@@ -2,11 +2,11 @@
 Programma dod iespēju izvēlēties teoriju, pildīt patstāvīgos uzdevumus vai pildīt pārbaudes darbu
 
 Izveidoja: Kristiāns Kokars
-V0.0
+V0.1
 """
 
 
-def atzime(rezultats, maksimali):
+def atzime(rezultats, maksimali, darbs):
     print()
     vertejums = rezultats / maksimali  # aprēķina rezultātu 0-1
     if vertejums <= 0.1:  # nosaka kāds ir vērtējums
@@ -29,85 +29,30 @@ def atzime(rezultats, maksimali):
         print('Vērtējums: 9(teicami)')
     elif vertejums <= 1:
         print('Vērtējums: 10(izcili)')
+    if darbs == 'kontr':
+        lietotajs.append(vertejums*10)
+        atzimes_saglab()
 
 
-temas = ['1. Kvadrātvienādojums']  # tēmu saraksts
+def atzimes_saglab():
+    atzimes_f = open('atzimes.txt', 'a', encoding='utf8')
+    atzimes_f.write(f'{lietotajs}\n')
+    atzimes_f.close()
 
 
 def teorija():
+    teoriju_f = open('teorija.txt', 'r', encoding='utf8')
+    teorijas = teoriju_f.read()
+    teoriju_f.close()
     print('Izvēlies teoriju:', *temas, sep='\n')
-    teorijaNr = int(input('Izvēle: '))  # dod iespēju izvēlēties par kuru tēmu lasīt teoriju
-    print()
-    if teorijaNr == 1:  # izvada izvēlēto teoriju
-        print('Teorija:\n', temas[0], '''\n
-    Vienādojumu ax2+bx+c=0, kur a, b un c - reāli skaitļi, a≠0, sauc par kvadrātvienādojumu.
-    Piemērs:
-     4x^2−3x+1=0
-     a=4
-     b=−3
-     c=1
-    Kvadrātvienādojuma saknes var atrast pēc formulām:
-    x1=(−b+√D)/2ax
-    2=(−b−√D(/2a,
-    kur D=b^2−4ac.
-     
-    D sauc par diskriminantu.
-    Pēc diskriminanta vērtības var noteikt kvadrātvienādojuma sakņu skaitu.
-     Ja D<0 (negatīvs), tad vienādojumam nav atrisinājuma reālo skaitļu kopā
-    Ja D=0, tad vienādojumam ir divas vienādas saknes
-    Ja D>0 (pozitīvs), tad vienādojumam ir divas dažādas saknes.
-    Kvadrātvienādojumu x^2+bx+c=0 var risināt arī pēc Vjeta teorēmas:
-    {x1⋅x2=c  x1+x2=−b 
-    Ievēro: koeficients pie x^2 ir a=1!
-    (Atrisināšanas piemērus skat. pie uzdevumiem.)
-    
-    Nepilnie kvadrātvienādojumi
-    
-    Ir divu veidu nepilnie kvadrātvienādojumi:
-    Ja c=0, tad vienādojums ir ax^2+bx=0;
-    Ja b=0, tad ax^2+c=0.
-      
-    Nepilnos kvadrātvienādojumus drīkst risināt ar diskriminanta formulām,
-    bet racionālāk būs izvēlēties speciālas metodes:
-     
-    1) ax^2+bx=0 risina, sadalot reizinātājos (iznesot pirms iekavām x).
-     
-    x(ax+b)=0
-    Tātad x=0 vai ax+b=0. (Jo divu skaitļu reizinājums ir nulle tad un tikai tad,
-    ja vismaz viens no šiem skaitļiem ir 0.)
-    Viena sakne ir 0, bet otra sakne ir x=−b/a.
-    Piemērs:
-    2x^2−30x=0
-    x(2x−30)=0
-    1)x=0
-    2)2x−30=0⇔2x=30⇔x=15
-     
-    Atbilde: x1=0, x2=15.
-    2) ax^2+c=0 risina, pārnesot saskaitāmos dažādās pusēs un tad velkot kvadrātsakni.
-    
-    ax^2=−c (izdala abas puses ar a)
-    x^2=−c/a
-    |x|=√(−c/a)
-    (Ievēro: velkot sakni, iegūst x moduļa vērtību!)
-     
-    Tas nozīmē, ka
-    x1=√(−c/a)
-    x2=-√(−c/a)
-    Piemērs:
-    4x^2−100=0
-    4x^2=100 ∣:4
-    x^2=25
-    |x|=√25
-    x1=5; x2=5
-     
-    Atbilde: x1=5; x2=−5.
-    Piemērs:
-    x^2+36=0
-    x^2=−36
-    Šim vienādojumam nav atrisinājuma, jo kvadrātsakni nedrīkst vilkt no negatīva skaitļa 
-    (zinām arī, ka skaitli kāpinot kvadrātā, nevar iegūt negatīvu skaitli).
-     
-    Atbilde: sakņu nav.''')
+    while True:
+        teorijaNr = int(input('Izvēle: '))  # dod iespēju izvēlēties par kuru tēmu lasīt teoriju
+        print()
+        if teorijaNr == 1:  # izvada izvēlēto teoriju
+            print('Teorija:\n ', temas[0], '\n', teorijas, sep='')
+            break
+        else:
+            print('Nepareiza ievade!\n')
 
 
 def patstavigais_darbs():
@@ -136,7 +81,7 @@ def patstavigais_darbs():
     else:
         print('Tādas tēmas numura nav!\n')
         patstavigais_darbs()
-    atzime(punkti, atb_sk)
+    atzime(punkti, atb_sk, "patst")
 
 
 def kontroldarbs():
@@ -163,7 +108,7 @@ def kontroldarbs():
     else:
         print('Tādas tēmas numura nav!\n')
         patstavigais_darbs()
-    atzime(punkti, atb_sk)
+    atzime(punkti, atb_sk, "kontr")
 
 
 def lietotaja_izveles():
@@ -182,4 +127,31 @@ def lietotaja_izveles():
         lietotaja_izveles()
 
 
-lietotaja_izveles()
+def lietotaja_saglabasana():
+    global lietotajs
+    vards = input('Kāds ir tavs vārds: ')
+    uzvards = input('Kāds ir tavs uzvārds: ')
+    lietotajs = [vards, uzvards]
+
+
+temas = ['1. Kvadrātvienādojums']  # tēmu saraksts
+
+"""
+cilki, kas ļauj lietotājam izvēlēties vai sākt un beigt darbus, 
+kad lietotājs beidzis tiek dota izvele nākošajam lietotājam.
+
+"""
+while True:
+    start = input('Vai tu vēlies sākt darbu?\n1. Jā\n2. Nē\nIzvēle: ')
+    if start == '1':
+        lietotaja_saglabasana()
+        while True:
+            lietotaja_izveles()
+            izvele = input('Vai tu vēlies atgriesties izvēlnē?\n1. Jā\n2. Nē\nIzvēle: ')
+            print()
+            if izvele == '2':
+                print('Visu labu!\n\nNākamais lietotājs:')
+                break
+    else:
+        print('Beigas')
+        break
