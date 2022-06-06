@@ -1,0 +1,1 @@
+['Kristiāns', 'Kokars', 10.0]
